@@ -1,29 +1,63 @@
-// RadixSort.java
-import java.util.*;
+import java.util.Arrays;
 
-public class RadixSort {
-    public static void radixSort(int[] arr) {
-        int max = Arrays.stream(arr).max().orElse(0);
-        for (int exp = 1; max / exp > 0; exp *= 10) {
-            countingSort(arr, exp);
+public class RadixSort implements IGenericSort<Integer> {
+
+    
+    /** 
+     * @param array
+     * @return Integer[]
+     */
+    @Override
+    public Integer[] sort(Integer[] array) {
+        if (array == null || array.length == 0) {
+            return array;
         }
+
+        int[] intArray = new int[array.length];
+        for (int i = 0; i < array.length; i++) {
+            intArray[i] = array[i];
+        }
+
+        // max value array
+        int max = Arrays.stream(intArray).max().getAsInt();
+
+        // Aplica Radix Sort
+        for (int exp = 1; max / exp > 0; exp *= 10) {
+            countingSort(intArray, exp);
+        }
+
+       
+        for (int i = 0; i < array.length; i++) {
+            array[i] = intArray[i];
+        }
+
+        return array; // array ordenado
     }
 
-    private static void countingSort(int[] arr, int exp) {
-        int n = arr.length;
+    
+    private void countingSort(int[] array, int exp) {
+        int n = array.length;
         int[] output = new int[n];
         int[] count = new int[10];
+        Arrays.fill(count, 0);
 
+        // Contar la frecuencia de cada dígito
         for (int i = 0; i < n; i++) {
-            count[(arr[i] / exp) % 10]++;
+            count[(array[i] / exp) % 10]++;
         }
+
+        // calcula posiciones finales
         for (int i = 1; i < 10; i++) {
             count[i] += count[i - 1];
         }
+
+        // array salida
         for (int i = n - 1; i >= 0; i--) {
-            output[count[(arr[i] / exp) % 10] - 1] = arr[i];
-            count[(arr[i] / exp) % 10]--;
+            output[count[(array[i] / exp) % 10] - 1] = array[i];
+            count[(array[i] / exp) % 10]--;
         }
-        System.arraycopy(output, 0, arr, 0, n);
+
+       
+        System.arraycopy(output, 0, array, 0, n);
     }
 }

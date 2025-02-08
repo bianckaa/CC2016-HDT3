@@ -1,39 +1,42 @@
-import java.lang.Comparable;
+import java.util.Arrays;
 
-public class MergeSort<T extends Comparable<T>> implements IGenericSort<T>{
+public class MergeSort<T extends Comparable<T>> implements IGenericSort<T> {
+
     @Override
     public T[] sort(T[] array) {
         if (array == null || array.length == 0) return array;
-        mergeSort(array, 0, array.length);
+        mergeSort(array, 0, array.length - 1);
         return array;
     }
 
     private void mergeSort(T[] A, int lo, int hi) {
-        if (hi - lo <= 1) return;
-
-        int mid = (lo + hi) / 2;
+        if (lo >= hi) return;
+        int mid = lo + (hi - lo) / 2;
         mergeSort(A, lo, mid);
-        mergeSort(A, mid, hi);
+        mergeSort(A, mid + 1, hi);
         merge(A, lo, mid, hi);
     }
 
     private void merge(T[] A, int lo, int mid, int hi) {
-        Comparable<T>[] B = new Comparable[hi - lo];
-        int i = lo, j = mid, k = 0;
+        T[] B = Arrays.copyOfRange(A, lo, hi + 1);
+        int i = 0;
+        int j = mid - lo + 1;
+        int k = lo;
 
-        while (i < mid && j < hi) {
-            if (A[i].compareTo(A[j]) < 0) B[k++] = A[i++];
-            else B[k++] = A[j++];
+        while (i <= mid - lo && j <= hi - lo) {
+            if (B[i].compareTo(B[j]) <= 0) {
+                A[k++] = B[i++];
+            } else {
+                A[k++] = B[j++];
+            }
         }
 
-        while (i < mid ) {
-            B[k++] = A[i++];
+        while (i <= mid - lo) {
+            A[k++] = B[i++];
         }
 
-        while (j < hi ) {
-            B[k++] = A[j++];
+        while (j <= hi - lo) {
+            A[k++] = B[j++];
         }
-
-        System.arraycopy(B, 0, A, lo, hi - lo);
     }
 }

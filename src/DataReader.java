@@ -3,7 +3,7 @@ import java.io.*;
 import java.util.*;
 
 public class DataReader {
-    public static List<List<Integer>> readData(String filename) {
+    public List<List<Integer>> readData(String filename) {
         List<List<Integer>> datasets = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String line;

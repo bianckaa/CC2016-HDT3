@@ -4,8 +4,7 @@ import java.io.IOException;
 import java.util.Random;
 
 public class DataGenerator {
-    public static void main(String[] args) {
-        String filename = "data.txt";
+    public void generateData(String filename) {
         Random rand = new Random();
         
         try (FileWriter writer = new FileWriter(filename)) {

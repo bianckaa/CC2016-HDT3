@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 @SuppressWarnings("unused")
 public class DataReaderTest {
+    DataReader dataReader = new DataReader();
+
     @Test
     public void testReadData() {
         String filename = "test_read_data.txt";
@@ -16,8 +18,7 @@ public class DataReaderTest {
             e.printStackTrace();
         }
 
-
-        List<List<Integer>> data = DataReader.readData(filename);
+        List<List<Integer>> data = dataReader.readData(filename);
 
         assertEquals(1, data.size()); 
         assertEquals(8, data.get(0).size()); 
@@ -38,7 +39,7 @@ public class DataReaderTest {
             e.printStackTrace();
         }
 
-        List<List<Integer>> data = DataReader.readData(filename);
+        List<List<Integer>> data = dataReader.readData(filename);
 
         assertEquals(2, data.size());
         assertArrayEquals(new Integer[]{170, 45, 75}, data.get(0).toArray());

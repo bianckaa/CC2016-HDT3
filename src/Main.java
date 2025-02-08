@@ -16,14 +16,18 @@ public class Main {
 
         Integer[] array = flatList.toArray(new Integer[0]);
 
-        List<IGenericSort<Integer>> algorithms = Arrays.asList(new InsertionSort<>(), new MergeSort<>(), new GnomeSort<>());
+        List<IGenericSort<Integer>> algorithms = Arrays.asList(
+            new InsertionSort<>(), 
+            new MergeSort<>(), 
+            new QuickSort<>(), 
+            new GnomeSort<>());
 
         for(IGenericSort<Integer> algorithm : algorithms) {
             Integer[] copy = array.clone();
             long start = System.nanoTime();
             algorithm.sort(copy);
             long end = System.nanoTime();
-            System.out.println(algorithm.getClass().getSimpleName() + ": " + (end - start) + " nanosegundos");
+            System.out.println(algorithm.getClass().getSimpleName() + " ordenó correctamente la lista en " + (end - start) + " nanosegundos");
         }
     }
 }

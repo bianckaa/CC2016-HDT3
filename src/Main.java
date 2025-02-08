@@ -4,17 +4,10 @@ public class Main {
     public static void main(String[] args) {
         DataReader reader = new DataReader();
         DataGenerator generator = new DataGenerator();
-
-        String file = "numeros.txt";
+        String file = "dataset.txt";
 
         generator.generateData(file);
-
         List<List<Integer>> numeros = reader.readData(file);
-
-        if (numeros.isEmpty()) {
-            System.out.println("No se logro leer correctamente los números.");
-            return;
-        }
 
         List<Integer> flatList = new ArrayList<>();
         for (List<Integer> dataset : numeros) {

@@ -13,28 +13,28 @@ public class RadixSort implements IGenericSort<Integer> {
             return array;
         }
 
+        // Convertir el array de Integer a un array de enteros primitivos
         int[] intArray = new int[array.length];
         for (int i = 0; i < array.length; i++) {
             intArray[i] = array[i];
         }
 
-        // max value array
+        // max value array 
         int max = Arrays.stream(intArray).max().getAsInt();
 
-        // Aplica Radix Sort
+        // Aplicar Radix Sort
         for (int exp = 1; max / exp > 0; exp *= 10) {
             countingSort(intArray, exp);
         }
 
-       
+        // Convertir el array de enteros de vuelta a Integer
         for (int i = 0; i < array.length; i++) {
             array[i] = intArray[i];
         }
 
-        return array; // array ordenado
+        return array; // Devuelve el array ordenado
     }
 
-    
     private void countingSort(int[] array, int exp) {
         int n = array.length;
         int[] output = new int[n];
@@ -46,12 +46,12 @@ public class RadixSort implements IGenericSort<Integer> {
             count[(array[i] / exp) % 10]++;
         }
 
-        // calcula posiciones finales
+        
         for (int i = 1; i < 10; i++) {
             count[i] += count[i - 1];
         }
 
-        // array salida
+       
         for (int i = n - 1; i >= 0; i--) {
             output[count[(array[i] / exp) % 10] - 1] = array[i];
             count[(array[i] / exp) % 10]--;

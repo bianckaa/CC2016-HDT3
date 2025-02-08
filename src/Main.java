@@ -7,7 +7,7 @@ public class Main {
 
         String file = "numeros.txt";
 
-        //generator.generateData(file);
+        generator.generateData(file);
 
         List<List<Integer>> numeros = reader.readData(file);
 

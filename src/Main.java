@@ -20,7 +20,8 @@ public class Main {
             new InsertionSort<>(), 
             new MergeSort<>(), 
             new QuickSort<>(), 
-            new GnomeSort<>());
+            new GnomeSort<>(),
+            new RadixSort<>());
 
         for(IGenericSort<Integer> algorithm : algorithms) {
             Integer[] copy = array.clone();

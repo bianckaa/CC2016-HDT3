@@ -8,11 +8,8 @@ public class DataGenerator {
         Random rand = new Random();
         
         try (FileWriter writer = new FileWriter(filename)) {
-            for (int numElements = 10; numElements <= 3000; numElements *= 10) {
-                writer.write("\nDataset size: " + numElements + "\n");
-                for (int i = 0; i < numElements; i++) {
-                    writer.write(rand.nextInt(10000) + "\n");
-                }
+            for (int i = 0; i <= 3000; i++) {
+                writer.write(rand.nextInt(1000) + "\n");
             }
             System.out.println("Datos generados en " + filename);
         } catch (IOException e) {

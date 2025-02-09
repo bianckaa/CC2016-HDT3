@@ -10,11 +10,11 @@ public class Main {
 
         String file = "dataset.txt";
         System.out.print("¡Bienvenido! \n");
-        System.out.print("¿Cuántos números enteros desea generar? ");
+        /* System.out.print("¿Cuántos números enteros desea generar? ");
         int limitSuperior = scanner.nextInt();
         System.out.println();
         generator.generateData(file, limitSuperior);
-
+        */ 
         List<List<Integer>> listaDeListas = reader.readData(file);
         List<Integer> lista = new ArrayList<>();
         for (List<Integer> sublista : listaDeListas) {
@@ -55,6 +55,7 @@ public class Main {
                     sobreescribirArchivo(arrayOrdenado, file);
                 }
                 menuContinuar = false;
+                continue;
             }
             
             if (choice < 1 || choice > 5) {

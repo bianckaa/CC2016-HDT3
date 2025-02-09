@@ -9,9 +9,9 @@ public class DataGeneratorTest {
         // Crear una instancia de DataGenerator
         DataGenerator generator = new DataGenerator();
         String filename = "test_data.txt";
-
+        int limitSuperior = 3000;
         
-        generator.generateData(filename);
+        generator.generateData(filename, limitSuperior);
 
         
         File file = new File(filename);

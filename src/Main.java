@@ -7,17 +7,21 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         DataReader reader = new DataReader();
         DataGenerator generator = new DataGenerator();
+
         String file = "dataset.txt";
+        System.out.print("¡Bienvenido! \n");
+        System.out.print("¿Cuántos números enteros desea generar? ");
+        int limitSuperior = scanner.nextInt();
+        System.out.println();
+        generator.generateData(file, limitSuperior);
 
-        generator.generateData(file);
-        List<List<Integer>> numeros = reader.readData(file);
-
-        List<Integer> flatList = new ArrayList<>();
-        for (List<Integer> dataset : numeros) {
-            flatList.addAll(dataset);
+        List<List<Integer>> listaDeListas = reader.readData(file);
+        List<Integer> lista = new ArrayList<>();
+        for (List<Integer> sublista : listaDeListas) {
+            lista.addAll(sublista);
         }
-
-        Integer[] array = flatList.toArray(new Integer[0]);
+        
+        Integer[] array = lista.toArray(new Integer[0]);
 
         List<IGenericSort<Integer>> algorithms = Arrays.asList(
             new InsertionSort<>(), 
@@ -25,21 +29,32 @@ public class Main {
             new QuickSort<>(), 
             new GnomeSort<>(),
             new RadixSort<>());
+        Integer[] arrayOrdenado = null;
 
-        while (true) {
-            System.out.println("Seleccione un algoritmo de ordenamiento:");
-            System.out.println("1. Insertion Sort");
-            System.out.println("2. Merge Sort");
-            System.out.println("3. Quick Sort");
-            System.out.println("4. Gnome Sort");
-            System.out.println("5. Radix Sort");
-            System.out.println("6. Salir");
-            System.out.print("Opción: ");
-            
-            int choice = scanner.nextInt();
+        boolean menuContinuar = true;
+        while (menuContinuar) {
+            System.out.println("\n+ ================================================== +");
+            System.out.println("                  Selección de Algoritmo             ");
+            System.out.println("+ ================================================== +");
+            System.out.printf("| %-5s | %-40s |\n", "N°", "Algoritmo de Ordenamiento");
+            System.out.println("+ ================================================== +");
+            System.out.printf("| %-5s | %-40s |\n", "1", "Insertion Sort");
+            System.out.printf("| %-5s | %-40s |\n", "2", "Merge Sort");
+            System.out.printf("| %-5s | %-40s |\n", "3", "Quick Sort");
+            System.out.printf("| %-5s | %-40s |\n", "4", "Gnome Sort");
+            System.out.printf("| %-5s | %-40s |\n", "5", "Radix Sort");
+            System.out.printf("| %-5s | %-40s |\n", "6", "Salir");
+            System.out.println("+ ================================================== +");
+            System.out.print("Ingrese el N° del algoritmo a elegir: ");
+            int choice  = scanner.nextInt();
+            System.out.println();
+
             if (choice == 6) {
-                System.out.println("Saliendo...");
-                break;
+                System.out.println("Saliendo del programa...");
+                if (arrayOrdenado != null) {
+                    sobreescribirArchivo(arrayOrdenado, file);
+                }
+                menuContinuar = false;
             }
             
             if (choice < 1 || choice > 5) {
@@ -48,19 +63,13 @@ public class Main {
             }
             
             IGenericSort<Integer> algorithm = algorithms.get(choice - 1);
-            Integer[] arrayOrdenado =null;
-            for (int i = 0; i < 100; i++) {
-                Integer[] arrayCopia = array.clone();
-                long start = System.nanoTime();
-                algorithm.sort(arrayCopia);
-                long end = System.nanoTime();
-                System.out.println(algorithm.getClass().getSimpleName() + " ordenó correctamente la lista en " + (end - start) + " nanosegundos");
-                arrayOrdenado = arrayCopia;
-            }
-
-            sobreescribirArchivo(arrayOrdenado, file);
-        }
-        scanner.close();
+            Integer[] arrayCopia = array.clone();
+            long start = System.nanoTime();
+            algorithm.sort(arrayCopia);
+            long end = System.nanoTime();
+            System.out.println(algorithm.getClass().getSimpleName() + " ordenó correctamente la lista en " + (end - start) + " nanosegundos");
+            arrayOrdenado = arrayCopia;
+        } scanner.close();
     }
 
     private static void sobreescribirArchivo (Integer[] arrayOrdenado, String file) {
@@ -68,7 +77,6 @@ public class Main {
             for (Integer numero : arrayOrdenado) {
                 writer.write(numero + "\n");
             }
-            System.out.println("Los datos ordenados fueron escritos correctamente en " + file);
         } catch (IOException e) {
             System.out.println("Error al escribir en el archivo: " + e.getMessage());
         }

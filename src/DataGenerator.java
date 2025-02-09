@@ -8,19 +8,15 @@ public class DataGenerator {
     /** 
      * @param filename
      */
-    public void generateData(String filename) {
+    public void generateData(String filename, int limitSuperior) {
         Random rand = new Random();
         File file = new File(filename);
 
-        if (file.exists()) {
-            System.out.println("El archivo ya existe y será sobrescrito: " + filename);
-        }
-
         try (FileWriter writer = new FileWriter(file, false)) { 
-            for (int i = 0; i <= 3000; i++) {
+            for (int i = 0; i < limitSuperior; i++) {
                 writer.write(rand.nextInt(1000) + "\n");
             }
-            System.out.println("Datos generados en " + filename);
+            System.out.println("Los datos fueron generados correctamente en el archivo " + filename);
         } catch (IOException e) {
             e.printStackTrace();
         }

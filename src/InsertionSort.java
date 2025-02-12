@@ -11,6 +11,12 @@
  * Ordena una lista de datos utilizando el algoritmo de ordenamiento Insertion. 
  */
 public class InsertionSort<T extends Comparable<T>> implements IGenericSort<T> {
+    /**  
+     * Ordena arreglo utilizando algoritmos de Insertion Sort.
+     * 
+     * @param array arreglo de elementos a ordenar
+     * @return arreglo ordenado ascendentemente
+     */
     @Override
     public T[] sort(T[] array) {
         int n = array.length;

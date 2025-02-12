@@ -14,6 +14,12 @@ import java.util.Arrays;
 
 public class MergeSort<T extends Comparable<T>> implements IGenericSort<T> {
 
+    /**
+     * Ordena el arreglo dado usando el algoritmo Merge Sort.
+     *
+     * @param array  arreglo a ordenar
+     * @return  arreglo ordenado
+     */
     @Override
     public T[] sort(T[] array) {
         if (array == null || array.length == 0) return array;
@@ -21,6 +27,13 @@ public class MergeSort<T extends Comparable<T>> implements IGenericSort<T> {
         return array;
     }
 
+    /**
+     * Divide recursivamente el arreglo en subarreglos mas pequenos y los ordena.
+     *
+     * @param A   arreglo a ordenar
+     * @param lo  indice inicial del subarreglo
+     * @param hi   indice final del subarreglo
+     */
     private void mergeSort(T[] A, int lo, int hi) {
         if (lo >= hi) return;
         int mid = lo + (hi - lo) / 2;
@@ -29,6 +42,14 @@ public class MergeSort<T extends Comparable<T>> implements IGenericSort<T> {
         merge(A, lo, mid, hi);
     }
 
+    /**
+     * Une dos subarreglos ordenados de vuelta en el arreglo principal.
+     *
+     * @param A    arreglo que contiene los subarreglos a unir
+     * @param lo   indice inicial del primer subarreglo
+     * @param mid  indice final del primer subarreglo
+     * @param hi   indice final del segundo subarreglo
+     */
     private void merge(T[] A, int lo, int mid, int hi) {
         T[] B = Arrays.copyOfRange(A, lo, hi + 1);
         int i = 0;

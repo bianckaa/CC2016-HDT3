@@ -16,8 +16,10 @@ public class RadixSort<T extends Comparable<T>> implements IGenericSort<T> {
 
     
     /** 
-     * @param array
-     * @return T[]
+     * Ordena arreglo usando el algoritmo Radix Sort
+     * 
+     * @param array arreglo a ordenar
+     * @return arreglo ordenado ascendentemente
      */
     @SuppressWarnings("unchecked")
     @Override
@@ -26,7 +28,6 @@ public class RadixSort<T extends Comparable<T>> implements IGenericSort<T> {
             return array;
         }
 
-       
         int[] intArray = new int[array.length];
         for (int i = 0; i < array.length; i++) {
             intArray[i] = (Integer) array[i]; // Cast a Integer
@@ -38,9 +39,7 @@ public class RadixSort<T extends Comparable<T>> implements IGenericSort<T> {
         // Aplica Radix Sort
         for (int exp = 1; max / exp > 0; exp *= 10) {
             countingSort(intArray, exp);
-        }
-
-      
+        }      
         for (int i = 0; i < array.length; i++) {
             array[i] = (T) Integer.valueOf(intArray[i]); // Cast de vuelta a T
         }
@@ -48,7 +47,12 @@ public class RadixSort<T extends Comparable<T>> implements IGenericSort<T> {
         return array; // Devuelve el array ordenado
     }
 
-  
+    /**
+     * Itera de ordenamiento usando algoritmo Counting Sort
+     * siento esto aun parte de Radix Sort
+     * @param array arreglo a ordenar de manera parcial
+     * @param exp posicion decimal actual usada para ordenar
+     */
     private void countingSort(int[] array, int exp) {
         int n = array.length;
         int[] output = new int[n];
@@ -69,9 +73,6 @@ public class RadixSort<T extends Comparable<T>> implements IGenericSort<T> {
         for (int i = n - 1; i >= 0; i--) {
             output[count[(array[i] / exp) % 10] - 1] = array[i];
             count[(array[i] / exp) % 10]--;
-        }
-
-       
-        System.arraycopy(output, 0, array, 0, n);
+        } System.arraycopy(output, 0, array, 0, n);
     }
 }

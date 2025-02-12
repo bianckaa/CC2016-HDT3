@@ -11,6 +11,12 @@
  * Ordena una lista de datos utilizando el algoritmo de ordenamiento Gnome. 
  */
 public class GnomeSort<T extends Comparable<T>> implements IGenericSort<T>  {
+    /** 
+     * Ordena arreglo utilizando algoritmo Gnome Sort
+     * 
+     * @param array Arreglo a ordenar
+     * @return arreglo ordenado ascendentemente
+     */
     @Override
     public T[] sort(T[] array) {
         int index = 0;

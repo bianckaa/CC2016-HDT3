@@ -13,10 +13,11 @@
 
 public class QuickSort<T extends Comparable<T>> implements IGenericSort<T> {
 
-    
     /** 
-     * @param array
-     * @return T[]
+     * Ordena arreglo usando algoritmo Quick Sort
+     * 
+     * @param array arreglo a ordenar
+     * @return arreglo ordenado ascendentemente
      */
     @Override
     public T[] sort(T[] array) {
@@ -27,6 +28,13 @@ public class QuickSort<T extends Comparable<T>> implements IGenericSort<T> {
         return array;
     }
 
+    /** 
+     * Ordena arreglo usando algoritmo Quick Sort
+     * 
+     * @param array arreglo a ordenar
+     * @param left indice izquierdo del subarreglo
+     * @param right indice derecho del subarreglo
+     */
     private void quickSort(T[] array, int left, int right) {
         if (left < right) {
             int pivotIndex = partition(array, left, right);
@@ -35,6 +43,13 @@ public class QuickSort<T extends Comparable<T>> implements IGenericSort<T> {
         }
     }
 
+    /**
+     * Parte arreglo y coloca el pivote en una correcta posición
+     * @param array arreglo a ordenar
+     * @param left indice izquierdo del subarreglo
+     * @param right indice derecho del subarreglo
+     * @return nueva posicion del pivote
+     */
     private int partition(T[] array, int left, int right) {
         T pivot = array[right]; 
         int i = left - 1; // El. más pequeño
@@ -51,6 +66,13 @@ public class QuickSort<T extends Comparable<T>> implements IGenericSort<T> {
         return i + 1;
     }
 
+    /** 
+     * Intercambia dos elementos en el arreglo.
+     * 
+     * @param array arreglo donde se intercambian los elementos
+     * @param i indice del primer elemento a intercambiar
+     * @param j indice del segundo elemento a intercambiar
+     */
     private void swap(T[] array, int i, int j) {
         T temp = array[i];
         array[i] = array[j];

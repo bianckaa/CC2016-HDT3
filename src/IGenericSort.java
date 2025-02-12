@@ -13,5 +13,11 @@
 import java.lang.Comparable;
 
 public interface IGenericSort<T extends Comparable<T>> {
+    /** 
+     * Ordena un arreglo generico
+     * 
+     * @param arr de elementos a ordenar
+     * @return arreglo ordenado
+    */
     public T[] sort (T[] arr);
 }

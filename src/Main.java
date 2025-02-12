@@ -15,6 +15,11 @@ import java.io.IOException;
 import java.util.*;
 
 public class Main {
+    /**
+     * Permite al usuario generar datos, leer archivo y
+     * ordenarlos utilizando diferentes algoritmos de ordenamiento.
+     * @param args
+     */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         DataReader reader = new DataReader();
@@ -85,6 +90,12 @@ public class Main {
         } scanner.close();
     }
 
+    /**
+     * Sobreescribe archivo con los datos ordenados. 
+     * 
+     * @param arrayOrdenado arreglo ordenado
+     * @param file nombre del archivo en el que se guardará el arreglo ordenado
+     */
     private static void sobreescribirArchivo (Integer[] arrayOrdenado, String file) {
         try (FileWriter writer = new FileWriter(file)) {
             for (Integer numero : arrayOrdenado) {

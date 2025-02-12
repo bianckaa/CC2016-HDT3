@@ -9,6 +9,9 @@
  * 
  * Clase: MergeSort.java
  * Ordena una lista de datos utilizando el algoritmo de ordenamiento Merge. 
+ * 
+ * Referencia:
+ * - Bailey, D. A. (2007). Java Structures: Data Structures in Java for the Principled Programmer (7ª ed.). McGraw-Hill.
  */
 import java.util.Arrays;
 

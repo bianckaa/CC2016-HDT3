@@ -9,6 +9,10 @@
  * 
  * Clase: GnomeSort.java
  * Ordena una lista de datos utilizando el algoritmo de ordenamiento Gnome. 
+ * 
+ * Referencia:
+ * - Bielefeldt, T. (2013). The Sound of Sorting: Audibilization and Visualization of Sorting Algorithms. 
+ *  http://panthema.net/2013/sound-of-sorting/ 
  */
 public class GnomeSort<T extends Comparable<T>> implements IGenericSort<T>  {
     /** 

@@ -9,6 +9,9 @@
  * 
  * Clase: QuickSort.java
  * Ordena una lista de datos utilizando el algoritmo de ordenamiento Quick. 
+ * 
+ * Referencia:
+ * - Bailey, D. A. (2007). Java Structures: Data Structures in Java for the Principled Programmer (7ª ed.). McGraw-Hill.
  */
 
 public class QuickSort<T extends Comparable<T>> implements IGenericSort<T> {

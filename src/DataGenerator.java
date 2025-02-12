@@ -1,3 +1,15 @@
+/**
+ * Universidad del Valle de Guatemala
+ * Algoritmos y Estructuras de Datos - Seccion 31
+ * Hoja de Trabajo 3
+ * Integrantes:
+ * Biancka Raxón 24960
+ * Maria Jose Ramirez 221051 
+ * 
+ * 
+ * Clase: DataGenerator.java
+ * Genera un archivo .txt con un número de datos aleatorios, el cual la cantidad lo decide el usuario. 
+ */
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;

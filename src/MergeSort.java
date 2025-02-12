@@ -1,3 +1,15 @@
+/**
+ * Universidad del Valle de Guatemala
+ * Algoritmos y Estructuras de Datos - Seccion 31
+ * Hoja de Trabajo 3
+ * Integrantes:
+ * Biancka Raxón 24960
+ * Maria Jose Ramirez 221051 
+ * 
+ * 
+ * Clase: MergeSort.java
+ * Ordena una lista de datos utilizando el algoritmo de ordenamiento Merge. 
+ */
 import java.util.Arrays;
 
 public class MergeSort<T extends Comparable<T>> implements IGenericSort<T> {

@@ -1,4 +1,15 @@
-// DataReader.java
+/**
+ * Universidad del Valle de Guatemala
+ * Algoritmos y Estructuras de Datos - Seccion 31
+ * Hoja de Trabajo 3
+ * Integrantes:
+ * Biancka Raxón 24960
+ * Maria Jose Ramirez 221051 
+ * 
+ * 
+ * Clase: Data Reader.java
+ * Lee un archivo .txt y extrae sus datos almacenados. 
+ */
 import java.io.*;
 import java.util.*;
 
